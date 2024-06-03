@@ -20,7 +20,6 @@
     - Android Studio, Springboot, MySQL
 
 5. **Lamp Kiddie School: Web Application (2024)**
-    - Lamp Kiddie School Folder
+    - [Github Repository](https://github.com/mlo-ol/Lamp-Kiddie-School.git)
     - ReactJS, SCSS, and Axios
     - [Lamp Kiddie School](https://lamp-kiddie-school.vercel.app/?fbclid=IwAR2EWQiQ6yjN570rblnXb8tqZXVE5m3BmCAF-9IOPqxbYmKMguYTjhIc2JM)
-    - [Github Repository](https://github.com/mlo-ol/Lamp-Kiddie-School.git)
