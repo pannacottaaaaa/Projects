@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Your questions will be addressed when sending a fill-up form">
+  <meta name="keywords" content="HTML,CSS">
+  <meta name="author" content="Maria Racquel Joy Caranay">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    The WKND Bakery - Fill-Up Form
+  </title>
+  <style>
+    p, p {
+      margin: 15px;
+      padding: 0px;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      padding: 50px 0;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -1px;
+      color: inherit;
+      font-size: 40px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      margin: 0;
+      font-weight: 300;
+      color: inherit;
+      padding: 50px;
+    }
+    .center {
+      text-align: center;
+    }
+    section {
+      height: 100vh;
+    }
+    /* NAVIGATION */
+    nav ul {
+      list-style: none;
+      text-align: center;
+    }
+    nav ul li {
+      display: inline-block;
+    }
+    nav ul li a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: #aaa;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 0 10px;
+    }
+    nav ul li a,
+    nav ul li a:after,
+    nav ul li a:before {
+      transition: all .5s;
+    }
+    nav ul li a:hover {
+      color: #FFFFFF;
+    }
+
+    /* stroke */
+    nav.stroke ul li a,
+    nav.fill ul li a {
+      position: relative;
+    }
+    nav.stroke ul li a:after,
+    nav.fill ul li a:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      content: '.';
+      color: transparent;
+      background: #aaa;
+      height: 1px;
+    }
+    nav.stroke ul li a:hover:after {
+      width: 100%;
+    }
+
+    nav.fill ul li a {
+      transition: all 2s;
+    }
+
+    nav.fill ul li a:after {
+      text-align: left;
+      content: '.';
+      margin: 0;
+      opacity: 0;
+    }
+    nav.fill ul li a:hover {
+      color: #fff;
+      z-index: 1;
+    }
+    nav.fill ul li a:hover:after {
+      z-index: -10;
+      animation: fill 1s forwards;
+      -webkit-animation: fill 1s forwards;
+      -moz-animation: fill 1s forwards;
+      opacity: 1;
+    }
+  }
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+  }
+  .container:hover .image {
+    opacity: 0.3;
+  }
+  .container:hover .middle {
+    opacity: 1;
+  }
+  li.dropdown {
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #E2D3CD;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  }
+  .dropdown-content a {
+  color: #808080;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  #navbar {
+  background-color: #000000;
+  position: fixed;
+  z-index: 9999;
+  top: -200px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  }
+  #navbar a {
+  float: bottom;
+  display: block;
+  color: #808080;
+  text-align: left;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+  }
+  #navbar a:hover {
+  color: white;
+  }
+
+  * {box-sizing: border-box;}
+  .header {
+    overflow: hidden;
+    padding: 20px 10px;
+  }
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .header a:hover {
+    background-color: #FFFFFF;
+    color: white;
+  }
+  .header-right {
+    float: right;
+    padding-right: 4%;
+  }
+  .parallax {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .highlight {
+  background-color: #d7a7cd;
+  background-image: linear-gradient(to right, #b285bf 0%, #d7a7cd 100%);
+}
+
+.error {
+  border: 3px solid #EDC211;
+  border-radius: 50%;
+  border-width: medium thin thick 2px;
+}
+
+del {
+  text-decoration: line-through;
+  background-color: #b719192b;
+  color: #a12323;
+}
+
+::-moz-selection,
+::selection {
+  background-color: #d7a7cd;
+  background-image: linear-gradient(to right, #b285bf 0%, #d7a7cd 100%);
+}
+
+svg{
+  font-weight:bold;
+  max-width:400px;
+  height:auto;
+}
+
+button {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, input, select, textarea {
+  color: #5A5A5A;
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+textarea {
+  overflow: auto;
+}
+
+#container {
+  border: solid 3px #474544;
+  max-width: 768px;
+  margin: 60px auto;
+  position: relative;
+}
+
+form {
+  padding: 37.5px;
+  margin: 50px 0;
+}
+
+h1 {
+  color: #474544;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.underline {
+  border-bottom: solid 2px #474544;
+  margin: -0.512em auto;
+  width: 80px;
+}
+
+.icon_wrapper {
+  margin: 50px auto 0;
+  width: 100%;
+}
+
+.icon {
+  display: block;
+  fill: #474544;
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
+.email {
+	float: right;
+	width: 45%;
+}
+
+input[type='text'], [type='email'], select, textarea {
+	background: none;
+  border: none;
+	border-bottom: solid 2px #474544;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin: 0em 0 1.875em 0;
+	padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+input[type='text']:focus, [type='email']:focus, textarea:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+
+.message {
+	float: none;
+}
+
+.name {
+	float: left;
+	width: 45%;
+}
+
+select {
+  background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.subject {
+  width: 100%;
+}
+
+.telephone {
+  width: 100%;
+}
+
+textarea {
+	line-height: 150%;
+	height: 150px;
+	resize: none;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+	color: #474544;
+}
+
+:-moz-placeholder {
+	color: #474544;
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: #474544;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: #474544;
+}
+
+#form_button {
+  background: none;
+  border: solid 2px #474544;
+  color: #474544;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 20px 35px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#form_button:hover {
+  background: #474544;
+  color: #F2F3EB;
+}
+
+@media screen and (max-width: 768px) {
+  #container {
+    margin: 20px auto;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .underline {
+    width: 68px;
+  }
+
+  #form_button {
+    padding: 15px 25px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+
+  .underline {
+    width: 53px;
+  }
+
+  input[type='text'], [type='email'], select, textarea {
+    font-size: 0.875em;
+  }
+}
+</style>
+</head>
+<body>
+  <div id="navbar">
+    <hr style="height:2px;width:7%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:10px;letter-spacing: 5px;">
+      the
+    </div>
+    <div style="color:#FFFFFF;font-family: Imperial BT;text-align:center;font-size:40px;">
+      WKND
+    </div>
+    <hr style="height:2px;width:7%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <nav class="stroke" style="font-family: Imperial BT;">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">About</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="about.html">Our Story</a>
+          </div>
+        <li><a href="menu.html">Menu</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">ASK & ORDER</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="questions.html">Fill-Up Form</a>
+            <a href="https://orderbasket.app/shop/the-wknd-bakery">Order Basket App</a>
+          </div>
+      </ul>
+    </nav>
+</div>
+<script>
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-500px";
+  }
+}
+</script>
+<section style="color: #FFFFFF;">
+<div class="container">
+  <video width="1440px;" autoplay muted loop>
+  <source src="images/wknd.mp4" type="video/mp4">
+  </video>
+  <div class="middle">
+    <hr style="height:2px;width:50%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:30px;letter-spacing: 5px;">
+      the
+    </div>
+    <div style="color:#FFFFFF;font-family: Imperial BT;text-align:center;font-size:120px;">
+      WKND
+    </div>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:30px;letter-spacing: 5px;">
+      bakery
+    </div>
+    <hr style="height:2px;width:50%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Bell MT Std;text-align:center;font-size:40px;padding-top:30px;">
+      Great food on great weekends
+    </div>
+    <nav class="stroke" style="font-family: Imperial BT;">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">About</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="about.html">Our Story</a>
+          </div>
+        <li><a href="menu.html">Menu</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">ASK & ORDER</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="questions.html">Fill-Up Form</a>
+            <a href="https://orderbasket.app/shop/the-wknd-bakery">Order Basket App</a>
+          </div>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div id="container">
+    <h1>&bull; Question Fill-Up Form &bull;</h1>
+    <div class="underline">
+    </div>
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:center;font-size:13px;padding-top:4%;"><i>
+        *Note: We only accept online orders as of now because our business
+    <br>doesn't have any physical store yet as we are still a small business.</i></p>
+    <form action="https://getform.io/f/c3ca0234-f840-4e79-8db2-9b5d2a427f93" method="post">
+      <div class="name">
+        <label for="name"></label>
+        <input type="text" placeholder="FULL NAME" name="name" id="name_input" required>
+      </div>
+      <div class="email">
+        <label for="email"></label>
+        <input type="email" placeholder="EMAIL" name="email" id="email_input" required>
+      </div>
+      <div class="telephone">
+        <label for="name"></label>
+        <input type="text" placeholder="CONTACT NUMBER" name="telephone" id="telephone_input" required>
+      </div>
+      <div class="subject">
+        <label for="subject"></label>
+        <select placeholder="Subject line" name="subject" id="subject_input" required>
+          <option disabled hidden selected>Subject line</option>
+          <option>Question/s about the desserts/pastry</option>
+          <option>Question/s about the store</option>
+          <option>Question/s about the orders</option>
+        </select>
+      </div>
+      <div class="message">
+        <label for="message"></label>
+        <textarea name="message" placeholder="QUESTIONS REGARDING THE PRODUCTS OR ORDERS" id="message_input" cols="30" rows="5" required></textarea>
+      </div>
+      <div class="submit">
+        <input type="submit" value="Send Message" id="form_button" />
+      </div>
+    </form>
+</div>
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+  <svg viewbox="0 0 100 20">
+      <defs>
+        <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="5%" stop-color="#326384"/>
+          <stop offset="95%" stop-color="#123752"/>
+        </linearGradient>
+        <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
+          <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)">
+            <animateTransform
+                attributeName="transform"
+                begin="0s"
+                dur="1.5s"
+                type="translate"
+                from="0,0"
+                to="40,0"
+                repeatCount="indefinite" />
+          </path>
+        </pattern>
+      </defs>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6" style="font-family: Imperial BT">the menu</text>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1" style="font-family: Imperial BT">the menu</text>
+      <div style="color:#000000;font-family: Bell MT Std;text-align:center;font-size:35px;padding-top:10px;">
+        as a guide to fill-up your questions
+      </div>
+  </svg>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding-top: 0px; margin: 2%;">
+  <span style="padding: 20px;">
+<div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <img src="images/IMG_0753.JPG" alt="Choco Ganache Cookies" style="width:100%">
+  <div style="text-align: center;padding: 10px 20px;">
+    <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 31px;">Choco Ganache Cookies</p>
+    <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+      <p><li>1 pack with 3 pieces = ₱450.00</li></p>
+      <p><li>1 pack with 6 pieces = ₱650.00</li></p>
+    </ul>
+    </div>
+  </div>
+  </span>
+  <span style="padding: 20px;">
+  <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <img src="images/IMG_0901.JPG" alt="Choco Smores Cookies" style="width:100%">
+    <div style="text-align: center;padding: 10px 20px;">
+      <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 31px;">Choco Smores Cookies</p>
+      <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+        <p><li>1 pack with 3 pieces = ₱450.00</li></p>
+        <p><li>1 pack with 6 pieces = ₱650.00</li></p>
+      </ul>
+      </div>
+    </div>
+    </span>
+    <span style="padding: 20px;">
+    <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <img src="images/IMG_0920.JPG" alt="Classic Madeleines" style="width:100%">
+      <div style="text-align: center;padding: 10px 20px;">
+        <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 32px;">Classic Madeleines</p>
+        <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+          <p><li>1 pack with 2 pieces = ₱180.00</li></p>
+          <p><li>1 pack with 5 pieces = ₱350.00</li></p>
+        </ul>
+        </div>
+      </div>
+      </span>
+      <span style="padding: 20px;">
+      <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <img src="images/IMG_1032.JPG" alt="Garlic Cheese Bread" style="width:100%">
+        <div style="text-align: center;padding: 10px 20px;">
+          <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 40px;">Garlic Cheese Bread</p>
+          <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+            <p><li>Whole Size = ₱390.00</li></p>
+          </ul>
+          </div>
+        </div>
+        </span>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;padding-top: 0px; margin: 2%;">
+    <span style="padding: 20px;">
+  <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <img src="images/IMG_0753.JPG" alt="house" style="width:100%">
+    <div style="text-align: center;padding: 10px 20px;">
+      <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 38px;">Lotus Brownie Cheesecake</p>
+      <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+        <p><li>Whole Size = ₱950.00</li></p>
+      </ul>
+      </div>
+    </div>
+    </span>
+    <span style="padding: 20px;">
+    <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <img src="images/IMG_0901.JPG" alt="champagne" style="width:100%">
+      <div style="text-align: center;padding: 10px 20px;">
+        <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 40px;">Lotus Madeleines</p>
+        <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+          <p><li>1 pack with 3 pieces = ₱240.00</li></p>
+          <p><li>1 pack with 6 pieces = ₱470.00</li></p>
+        </ul>
+        </div>
+      </div>
+      </span>
+      <span style="padding: 20px;">
+      <div style="width: 100%; background-color: #000000;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <img src="images/IMG_0920.JPG" alt="champagne" style="width:100%">
+        <div style="text-align: center;padding: 10px 20px;">
+          <p style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size: 33px;">Oreo Smores Cookies</p>
+          <ul style="font-family: Open Sauce Sans; color: #FFFFFF; text-align: left;">
+            <p><li>1 pack with 3 pieces = ₱450.00</li></p>
+            <p><li>1 pack with 6 pieces = ₱650.00</li></p>
+          </ul>
+          </div>
+        </div>
+        </span>
+    </div>
+<div style="background: #000000; padding: 10px; border: 1px solid #000000; margin: 0;">
+<div class="header" style="padding-left: 4%;">
+  <b class="logo" style="color:#FFFFFF;font-family: Imperial BT;text-align:left;padding-left: 1%;font-size:10px;">Contact The WKND Bakery by clicking the icons.</b>
+  <br>
+  <a href="https://www.facebook.com/thewknd.bakery/" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/facebook_icon_130940.png" style="width:40px;height:40px;"></a>
+  <a href="https://www.instagram.com/thewknd.bakery/" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/Instagram_icon.png.webp" style="width:40px;height:40px;"></a>
+  <a href="sms:+6309668641429" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/pngwing.com.png" style="width:40px;height:40px;"></a>
+  <a href="mailto:raxs07caranay@gmail.com" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/Daco_4136204.png" style="width:40px;height:40px;"></a>
+  <div class="header-right">
+    <b class="logo" style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size:10px;">COPYRIGHT © 2020 The WKND Bakery</b>
+</div>
+</div>
+</div>
+</body>
+</html>
