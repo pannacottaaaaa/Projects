@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="The story on how the WKND bakery was formed">
+  <meta name="keywords" content="HTML,CSS">
+  <meta name="author" content="Maria Racquel Joy Caranay">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    The WKND Bakery - About
+  </title>
+  <style>
+    p, p {
+      margin: 15px;
+      padding: 0px;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      padding: 50px 0;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -1px;
+      color: inherit;
+      font-size: 40px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      margin: 0;
+      font-weight: 300;
+      color: inherit;
+      padding: 50px;
+    }
+    .center {
+      text-align: center;
+    }
+    section {
+      height: 100vh;
+    }
+    /* NAVIGATION */
+    nav ul {
+      list-style: none;
+      text-align: center;
+    }
+    nav ul li {
+      display: inline-block;
+    }
+    nav ul li a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: #aaa;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 0 10px;
+    }
+    nav ul li a,
+    nav ul li a:after,
+    nav ul li a:before {
+      transition: all .5s;
+    }
+    nav ul li a:hover {
+      color: #FFFFFF;
+    }
+
+    /* stroke */
+    nav.stroke ul li a,
+    nav.fill ul li a {
+      position: relative;
+    }
+    nav.stroke ul li a:after,
+    nav.fill ul li a:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      content: '.';
+      color: transparent;
+      background: #aaa;
+      height: 1px;
+    }
+    nav.stroke ul li a:hover:after {
+      width: 100%;
+    }
+
+    nav.fill ul li a {
+      transition: all 2s;
+    }
+
+    nav.fill ul li a:after {
+      text-align: left;
+      content: '.';
+      margin: 0;
+      opacity: 0;
+    }
+    nav.fill ul li a:hover {
+      color: #fff;
+      z-index: 1;
+    }
+    nav.fill ul li a:hover:after {
+      z-index: -10;
+      animation: fill 1s forwards;
+      -webkit-animation: fill 1s forwards;
+      -moz-animation: fill 1s forwards;
+      opacity: 1;
+    }
+  }
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+  }
+  .container:hover .image {
+    opacity: 0.3;
+  }
+  .container:hover .middle {
+    opacity: 1;
+  }
+  li.dropdown {
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #E2D3CD;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  }
+  .dropdown-content a {
+  color: #808080;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  #navbar {
+  background-color: #000000;
+  position: fixed;
+  z-index: 9999;
+  top: -200px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  }
+  #navbar a {
+  float: bottom;
+  display: block;
+  color: #808080;
+  text-align: left;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+  }
+  #navbar a:hover {
+  color: white;
+  }
+  * {box-sizing: border-box;}
+  .header {
+    overflow: hidden;
+    padding: 20px 10px;
+  }
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .header a:hover {
+    background-color: #FFFFFF;
+    color: white;
+  }
+  .header-right {
+    float: right;
+    padding-right: 4%;
+  }
+  .parallax {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .highlight {
+  background-color: #d7a7cd;
+  background-image: linear-gradient(to right, #b285bf 0%, #d7a7cd 100%);
+}
+
+.error {
+  border: 3px solid #EDC211;
+  border-radius: 50%;
+  border-width: medium thin thick 2px;
+}
+
+del {
+  text-decoration: line-through;
+  background-color: #b719192b;
+  color: #a12323;
+}
+
+::-moz-selection,
+::selection {
+  background-color: #d7a7cd;
+  background-image: linear-gradient(to right, #b285bf 0%, #d7a7cd 100%);
+}
+svg{
+  font-weight:bold;
+  max-width:620px;
+  height:auto;
+}
+
+::selection {
+	background: transparent;
+}
+
+.color1{color:#000000}
+.color2{color:#000000}
+
+
+.card {
+	color: #013243;
+	position: absolute;
+	width: 300px;
+	height: 400px;
+	background: #e0e1dc;
+	transform-style: preserve-3d;
+	transform: translate(-50%,-50%) perspective(2000px);
+	box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5);
+	transition: 1s;
+}
+
+.card:hover {
+	transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2);
+	box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+}
+
+.card:before {
+	content:'';
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: #BAC1BA;
+	transform-origin: bottom;
+	transform: skewX(-45deg);
+}
+
+.card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -5px;
+	width: 5px;
+	height: 100%;
+	background: #92A29C;
+	transform-origin: left;
+	transform: skewY(-45deg);
+}
+
+.card .imgBox {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transform-origin: left;
+	transition: .7s;
+}
+
+.card .bark {
+	position: absolute;
+	background: #e0e1dc;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .7s;
+}
+
+.card .imgBox img {
+	min-width: 250px;
+	max-height: 400px;
+}
+
+.card:hover .imgBox {
+	transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+	opacity: 1;
+	transition: .6s;
+  box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 0 0 0 10px;
+	z-index: -1;
+	margin-top: 70px;
+}
+
+.card .details p {
+	font-size: 12px;
+	line-height: 17px;
+	padding: 0 0 0 20px;
+  font-family: Open Sauce Sans;
+  color: #000000;
+}
+
+.card .details h4 {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+</style>
+</head>
+<body>
+  <div id="navbar">
+    <hr style="height:2px;width:7%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:10px;letter-spacing: 5px;">
+      the
+    </div>
+    <div style="color:#FFFFFF;font-family: Imperial BT;text-align:center;font-size:40px;">
+      WKND
+    </div>
+    <hr style="height:2px;width:7%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <nav class="stroke" style="font-family: Imperial BT;">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">About</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="about.html">Our Story</a>
+          </div>
+        <li><a href="menu.html">Menu</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">ASK & ORDER</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="questions.html">Fill-Up Form</a>
+            <a href="https://orderbasket.app/shop/the-wknd-bakery">Order Basket App</a>
+          </div>
+      </ul>
+    </nav>
+</div>
+<script>
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-500px";
+  }
+}
+</script>
+<section style="color: #FFFFFF;">
+<div class="container">
+  <video width="1440px;" autoplay muted loop>
+  <source src="images/wknd.mp4" type="video/mp4">
+  </video>
+  <div class="middle">
+    <hr style="height:2px;width:50%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:30px;letter-spacing: 5px;">
+      the
+    </div>
+    <div style="color:#FFFFFF;font-family: Imperial BT;text-align:center;font-size:120px;">
+      WKND
+    </div>
+    <div style="color:#FFFFFF;font-family: Open Sauce Sans;text-align:center;font-size:30px;letter-spacing: 5px;">
+      bakery
+    </div>
+    <hr style="height:2px;width:50%;color:white;background-color:white;border-radius: 5px;"></hr>
+    <div style="color:#FFFFFF;font-family: Bell MT Std;text-align:center;font-size:40px;padding-top:30px;">
+      Great food on great weekends
+    </div>
+    <nav class="stroke" style="font-family: Imperial BT;">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">About</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="about.html">Our Story</a>
+          </div>
+        <li><a href="menu.html">Menu</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">ASK & ORDER</a>
+          <div class="dropdown-content" style="font-family: Imperial BT;">
+            <a href="questions.html">Fill-Up Form</a>
+            <a href="https://orderbasket.app/shop/the-wknd-bakery">Order Basket App</a>
+          </div>
+      </ul>
+    </nav>
+  </div>
+</div>
+  </section>
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:left; padding-top: 5%;padding-left: 6%;">
+  <svg viewbox="0 0 100 20">
+      <defs>
+        <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="5%" stop-color="#326384"/>
+          <stop offset="95%" stop-color="#123752"/>
+        </linearGradient>
+        <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
+          <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)">
+            <animateTransform
+                attributeName="transform"
+                begin="0s"
+                dur="1.5s"
+                type="translate"
+                from="0,0"
+                to="40,0"
+                repeatCount="indefinite" />
+          </path>
+        </pattern>
+      </defs>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6" style="font-family: Imperial BT">our story</text>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1" style="font-family: Imperial BT">our story</text>
+  </svg>
+</div>
+<div style="padding-left: 3%;">
+<div style="display:flex;justify-content:left; align-items:left;">
+<img src="images/compilation.png" style="width: 50%; padding-top: 50px;"/>
+<div style="padding-right: 5%;">
+  <span style="padding: 10px;">
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:left;font-size:15px;text-indent:20px;">
+        2020 is the year where all the businesses are forced to close their
+    <br>shops because of an <span class="highlight">unexpected pandemic</span> that takes our world's
+    <br>freedom. Many people are struggling to earn money as there is a
+    <br>so-called <span class="error">"quarantine"</span> that most people aren't allowed to leave their designated home.
+    </p>
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:left;font-size:15px;text-indent:20px;">
+        However, there's an <span class="highlight">increase of ecommerce</span> after the country puts into
+    <br>a minimal quarantine. With that reasonable announcement, we decided to
+    <br>make an <span class="error">online food business</span> that most people <span class="highlight">haven't tasted the
+    <br>delicacies before</span> and <span class="highlight">what they craved</span> in the past heavy quarantine.
+    </p>
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:left;font-size:15px;text-indent:20px;">
+        The first business that we implemented was <span class="error">the daily buns</span> and the
+    <br>main theme of it was <span class="highlight">korean street food bread that many people doesn't
+    <br>know nor tasted it for all these years</span>. We may have a lot of complicated
+    <br>issues along the process and competitions, gladly that the <span class="highlight">business
+    <br>turns out very successful</span> than we expected.
+    </p>
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:left;font-size:15px;text-indent:20px;">
+        After months of being an active business, we suddenly thought about
+    <br><span class="highlight">changing the store's theme and name</span> because making a homemade
+    <br>korean street food bread takes a lot of hours to make as it needs
+    <br>kneading and proofing before making into the final step of process. The
+    <br>new brand name of our business was <span class="error">'the WKND bakery'</span>, as it is the
+    <br>website that you're seeing right now. Our products is still homemade,
+    <br>but the process wasn't similar to the past products that we have. This the
+    <br><span class="highlight">start of something new to us, and we are glad that the business is doing
+    <br>well up until now</span>.
+    </p>
+    <p style="color:#000000;font-family: Open Sauce Sans;text-align:left;font-size:15px;text-indent:20px;">
+        Below this page, you can see the enumerated products that we
+    <br>usually did on both business implemented in these past years. While
+    <br>the reviews was on our instagram story highlights.
+    </p>
+</span>
+</div>
+</div>
+</div>
+<div>
+<div style="padding-left: 15%; margin: 20%;">
+  <div class="card">
+  <div class="imgBox">
+    <div class="bark"></div>
+    <img src="images/db.jpg">
+  </div>
+  <div class="details">
+    <h4 class="color1" style="font-size: 26px;line-height: 1px; font-family: Avenir Next;">the daily buns</h4>
+    <h4 class="color2 margin" style="font-size: 26px;line-height: 1px; font-family: Avenir;"><i>how did it start?</i></h4>
+    <p>14th of August 2020, Thursday Morning. That day was the official launch of our first business entitled "the daily buns" and we
+      sell the famous korean bread street food called as the "cream cheese garlic bread." Our products successfully sells a lot to the
+      point that we reached to Manila.
+    <p class="text-right">However, after a few months,
+      <br>we changed to another business.
+  </div>
+</div>
+<div style="padding-left: 60%; padding-bottom:10%;">
+    <div class="card">
+    <div class="imgBox">
+      <div class="bark"></div>
+      <img src="images/The WKND FAQ.png">
+    </div>
+    <div class="details">
+      <h4 class="color1" style="font-size: 26px;line-height: 1px; font-family: Imperial BT;">the WKND bakery</h4>
+      <h4 class="color2 margin" style="font-size: 26px;line-height: 1px; font-family:Bell MT Std;">how did it start?</h4>
+      <p>1st of March 2021, we officially re-launch our business but this time it is desserts and the new brand name was "the WKND bakery,"
+        wherein we deliver the delicacies every weekends only for you to enjoy your days. Our products are all desserts,
+        but we have a savory pastry that is inspired to our 1st business.
+      <p class="text-right">So this is the WKND Bakery,
+        <br>and claim your desserts in this upcoming weekends!
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div style="background: #000000; padding: 10px; border: 1px solid #000000; margin: 0;">
+<div class="header" style="padding-left: 4%;">
+  <b class="logo" style="color:#FFFFFF;font-family: Imperial BT;text-align:left;padding-left: 1%;font-size:10px;">Contact The WKND Bakery by clicking the icons.</b>
+  <br>
+  <a href="https://www.facebook.com/thewknd.bakery/" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/facebook_icon_130940.png" style="width:40px;height:40px;"></a>
+  <a href="https://www.instagram.com/thewknd.bakery/" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/Instagram_icon.png.webp" style="width:40px;height:40px;"></a>
+  <a href="sms:+6309668641429" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/pngwing.com.png" style="width:40px;height:40px;"></a>
+  <a href="mailto:raxs07caranay@gmail.com" style="color:#FFFFFF;font-family: Barlow;text-align:left;"><img src="images/Daco_4136204.png" style="width:40px;height:40px;"></a>
+  <div class="header-right">
+    <b class="logo" style="color:#FFFFFF;font-family: Imperial BT;text-align:left;font-size:10px;">COPYRIGHT © 2020 The WKND Bakery</b>
+</div>
+</div>
+</div>
+</body>
+</html>
