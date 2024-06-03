@@ -23,3 +23,4 @@
     - Lamp Kiddie School Folder
     - ReactJS, SCSS, and Axios
     - [Lamp Kiddie School](https://lamp-kiddie-school.vercel.app/?fbclid=IwAR2EWQiQ6yjN570rblnXb8tqZXVE5m3BmCAF-9IOPqxbYmKMguYTjhIc2JM)
+    - [Github Repository](https://github.com/mlo-ol/Lamp-Kiddie-School.git)
