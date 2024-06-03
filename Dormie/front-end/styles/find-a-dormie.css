@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+  :root {
+    --font-family: 'Poppins', sans-serif
+    font-size: 14px;
+  }
+
+  * {
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+  
+/* MAIN GRID (header - content - footer) */
+  #maingrid {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "head head"
+                         "cont cont"
+                         "foot foot";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  #maingrid > #header {
+    grid-area: head;
+  }
+
+  #maingrid > #content {
+    grid-area: cont;
+  }
+
+  #maingrid > #sidebar {
+   grid-area: side;
+  }
+
+  #maingrid > #footer {
+    grid-area: foot;
+  }
+
+/* FIND A DORMIE CSS */
+  /* DORMIE GRID */
+  .dormie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 351px) /*351px 351px 351px repeat(auto-fit, minmax(351px, 1fr)) */;
+    grid-template-rows: 1fr repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    gap: 30px 25px;
+    padding: 2%;
+  }
+
+  /* FILTERS */
+  .dormie-grid .filters {
+    grid-column: 1 / -1;
+  }
+
+  .dormie-grid #filters {
+    display: flex;
+    flex-direction: row;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+  }
+
+  .dormie-grid .filter-btn {
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    margin: 0;
+    border: none;
+    text-align: start;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .dormie-grid .filter-btn:hover {
+    opacity: 75%;
+  }
+
+  .dormie-grid .filter-btn i {
+    color: #9f86c0;
+  }
+
+  .dormie-grid .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dormie-grid .dropdown-content {
+    min-width: 180px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px 0px #000;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 5%;
+  }
+
+  input {
+    accent-color: #9f86c0;
+  }
+
+  .dropdown-content p {
+    padding: 2%;
+    margin-bottom: 4%;
+  }
+
+  .dormie-filters input {
+    padding: 2%;
+  }
+
+  .dropdown-content label:hover {
+    color: #9f86c0;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .filter-btn:active .dropdown-content {
+    display: block;
+  }
+
+  .dormie-grid h1 {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .dormie-grid #searchbar {
+    grid-column: 2/-1;
+  }
+
+  .dormie-grid #search {
+    border-radius: 5px;
+    width: 100%;
+    padding: 2%;
+    font-size: 1rem;
+    height: 100%;
+  }
+
+  .dormie-grid #apply {
+    background-color: #9f86c0;
+    color:#fff;
+  }
+
+  .dormie-grid #clear {
+    background-color: #d9d9d9;
+  }
+
+  .dormie-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 350px 1fr 1fr 1fr 1fr;
+    border-radius: 1%;
+    border: 1px solid #a6a6a6;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+  }
+
+  .dormie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .dormie-card:hover {
+    box-shadow: 0px 0px 10px 1px #000;
+  }
+
+  .dormie-name {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-left: 1%;
+    padding-top: 0.5%;
+  }
+
+  .dormie-loc {
+    font-size: 0.9rem;
+    padding-left: 1%;
+  }
+
+  .dormie-school {
+    font-size: 0.75rem;
+    color: #a6a6a6;
+    padding-left: 1%;
+  }
+
+  .dormie-budget {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-left: 1%;
+    padding-bottom: 0.5%;
+  }
+
+  @media screen and (max-width: 759px) {
+    .dormie-grid .filters {
+      flex-direction: column;
+      display: flex;
+      grid-column: 1 / -1;
+      justify-content: space-between;
+      padding: 0;
+      flex: 100%;
+    }
+  
+    .dormie-grid .filter-btn {
+      width: 100%;
+      padding-top: 0.5vw;
+      padding-bottom: 0.5vw;
+      padding-right: 2vw;
+      padding-left: 2vw;
+      margin: 1%;
+      border: none;
+      text-align: start;
+      background-color: #d9d9d9;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .dormie-grid h1 {
+      grid-column: 1 / -1;
+    }
+
+    .dormie-grid #search {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
